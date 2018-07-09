@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.profiler.bases.Client;
@@ -46,6 +47,21 @@ public class EZKD extends JavaPlugin implements Listener{
 		return ChatColor.translateAlternateColorCodes('&', "&7[&8EZKD&7]&r " + message);
 	}
 	
+	@EventHandler
+	public void onPlayerLogin(PlayerLoginEvent e)
+	{
+		Client c = this.profiler.getClientManager().getClient(e.getPlayer());
+		
+		Profile p = c.getProfile(this);
+		if(p == null)
+		{
+			p = c.addProfile(this);
+			p.setValue("Kills", 0);
+			p.setValue("Deaths", 0);
+			c.save();
+		}
+	}
+	
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 	
@@ -61,15 +77,6 @@ public class EZKD extends JavaPlugin implements Listener{
 						Client client = this.profiler.getClientManager().getClient(p);
 						
 						Profile profile = client.getProfile(this);
-						
-						if(profile == null)
-						{
-							profile = client.addProfile(this);
-							
-							profile.setValue("Kills", 0);
-							profile.setValue("Deaths", 0);
-							client.save();
-						}
 						
 						p.sendMessage(getFM("&7Kills: &a" + profile.getValue("Kills") + " &7Deaths: &c" + profile.getValue("Deaths")));
 						
