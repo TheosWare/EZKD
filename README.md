@@ -10,7 +10,7 @@ Follow the instructions below.
 
 
 ```
-None
+Download or Compile Profiler, and put that into your plugins.
 ```
 
 ### Installing
