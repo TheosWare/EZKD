@@ -1,7 +1,7 @@
 name: EZKD
 version: 1.0
 description: Keep track of your KD
-author: Theo
+author: Theos
 main: com.ezkd.main.EZKD
 depend: [Profiler]
 
