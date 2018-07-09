@@ -60,11 +60,11 @@ public class EZKD extends JavaPlugin implements Listener{
 						Player p = (Player)sender;
 						Client client = this.profiler.getClientManager().getClient(p);
 						
-						Profile profile = client.getProfile("EZKD");
+						Profile profile = client.getProfile(this);
 						
 						if(profile == null)
 						{
-							profile = client.addProfile("EZKD");
+							profile = client.addProfile(this);
 							
 							profile.setValue("Kills", 0);
 							profile.setValue("Deaths", 0);
@@ -94,11 +94,11 @@ public class EZKD extends JavaPlugin implements Listener{
 					
 					Client client = this.profiler.getClientManager().getClient(targp.getUniqueId());
 					
-					Profile profile = client.getProfile("EZKD");
+					Profile profile = client.getProfile(this);
 					
 					if(profile == null)
 					{
-						profile = client.addProfile("EZKD");
+						profile = client.addProfile(this);
 						profile.setValue("Kills", 0);
 						profile.setValue("Deaths", 0);
 						client.save();
