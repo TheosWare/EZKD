@@ -1,0 +1,14 @@
+name: EZKD
+version: 1.0
+description: Keep track of your KD
+author: Theo
+main: com.ezkd.main.EZKD
+depend: [Profiler]
+
+commands:
+   kd:
+      description: Check a targets KD.
+      usage: /<command> [player]
+permissions:
+    ezkd.kd:
+        description: Gives access to KD command
